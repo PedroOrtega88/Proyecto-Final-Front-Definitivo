@@ -1,13 +1,16 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MovieList from './components2/MovieList.jsx';
 import MovieDetails from './components2/MovieDetails.jsx';
+import Header from './components2/Header.jsx';
+import './App.css';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -19,6 +22,18 @@ const App = () => {
       const peliculasData = await response.json();
       setMovies(peliculasData);
       setLoading(false);
+      // Extraer categorías de las películas y almacenarlas en un array separado
+      const allCategories = peliculasData.reduce((acc, movie) => {
+        movie.category.split(', ').forEach(category => {
+          if (!acc.includes(category)) {
+            acc.push(category);
+          }
+        });
+        return acc;
+      }, []);
+      setCategories(allCategories);
+      // Inicialmente, mostrar todas las películas
+      setFilteredMovies(peliculasData);
     } catch (error) {
       setError(error);
       setLoading(false);
@@ -35,12 +50,29 @@ const App = () => {
 
   return (
     <Router>
+      <Header categories={categories} movies={movies} setFilteredMovies={setFilteredMovies} />
       <Routes>
-        <Route exact path="/" element={<MovieList movies={movies} />} />
+        <Route exact path="/" element={<MovieList movies={filteredMovies} />} />
         <Route path="/movie/:index" element={<MovieDetails movies={movies} />} />
+        {/* Ruta para mostrar películas por categoría */}
+        <Route path="/category/:category" element={<CategoryMovies movies={movies} />} />
+        {/* Manejar la redirección */}
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </Router>
   );
+};
+
+const CategoryMovies = ({ movies, params }) => {
+  const category = params.category;
+  const categoryMovies = movies.filter(movie => movie.category.includes(category));
+
+  return <MovieList movies={categoryMovies} />;
+};
+
+const NotFound = () => {
+  return <div>404 - Página no encontrada</div>;
 };
 
 export default App;

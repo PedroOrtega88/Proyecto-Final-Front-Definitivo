@@ -2,6 +2,7 @@ import './MovieDetails.css';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+
 const MovieDetails = ({ movies }) => {
   const { index } = useParams();
   const movie = movies[index];
