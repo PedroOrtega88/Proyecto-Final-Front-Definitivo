@@ -19,7 +19,7 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/peliculas');
+      const response = await fetch('https://proyecto-final-production-4c19.up.railway.app/peliculas');
       const peliculasData = await response.json();
       setMovies(peliculasData);
       setLoading(false);
