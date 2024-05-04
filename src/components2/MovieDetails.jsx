@@ -20,6 +20,8 @@ const MovieDetails = ({ movies }) => {
       <p>Actores: {movie.actors.join(", ")}</p>
       <p>Director: {movie.director}</p>
       <iframe title="trailer" width="560" height="315" src={movie.trailerUrl} frameBorder="0" allowFullScreen></iframe>
+    
+    
     </div>
   );
 };

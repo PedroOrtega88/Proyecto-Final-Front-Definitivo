@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import MovieList from './components2/MovieList.jsx';
 import MovieDetails from './components2/MovieDetails.jsx';
 import Header from './components2/Header.jsx';
+import CommentsPage from './components2/CommentsPage.jsx'
 import './App.css';
 
 const App = () => {
@@ -54,9 +55,10 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<MovieList movies={filteredMovies} />} />
         <Route path="/movie/:index" element={<MovieDetails movies={movies} />} />
-        {/* Ruta para mostrar películas por categoría */}
+        
         <Route path="/category/:category" element={<CategoryMovies movies={movies} />} />
-        {/* Manejar la redirección */}
+       
+        <Route path="/comments/:index" element={<CommentsPage movies={movies} />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>

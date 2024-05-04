@@ -14,6 +14,9 @@ const MovieList = ({ movies }) => {
             <Link to={`/movie/${index}`}>
               <img className="movie-image" src={pelicula.imageUrl} alt={pelicula.name} />
             </Link>
+            <div>
+              <Link to={`/comments/${index}`}>Comentarios</Link>
+            </div>
           </li>
         ))}
       </ul>
