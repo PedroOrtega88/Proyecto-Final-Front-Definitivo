@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const MovieList = ({ movies }) => {
   return (
     <div className="movie-list"> 
-      <h1>WIS</h1>
+      <h1></h1>
       <ul>
         {movies.map((pelicula, index) => (
           <li key={index}>
@@ -15,7 +15,7 @@ const MovieList = ({ movies }) => {
               <img className="movie-image" src={pelicula.imageUrl} alt={pelicula.name} />
             </Link>
             <div>
-              <Link to={`/comments/${index}`}>Comentarios</Link>
+            <Link to={`/comments/${index}`} className="link-comments">Comentarios</Link>
             </div>
           </li>
         ))}

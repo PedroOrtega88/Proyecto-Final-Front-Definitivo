@@ -4,6 +4,7 @@
   width: 100%; 
   max-width: 400px; 
   height: auto; 
+  border-radius: 5px;
 }
 
 .movie-details-container {
@@ -13,4 +14,10 @@
 .movie-details-container p {
   text-align: left; 
   display: inline-block; 
+}
+
+.link-comments {
+  color: rgb(235, 235, 235); /* Cambia el color del texto a azul */
+  text-decoration: none; /* Elimina la subrayado predeterminado del enlace */
+ font-size: 12px;
 }

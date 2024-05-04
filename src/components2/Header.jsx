@@ -17,7 +17,7 @@ const Header = ({ categories, movies, setFilteredMovies }) => {
 
   return (
     <header>
-      <h1></h1>
+      <h1>WhatISee</h1>
   
       <select onChange={handleCategoryChange} value={selectedCategory}>
         <option value="">Todas las categorías</option>
