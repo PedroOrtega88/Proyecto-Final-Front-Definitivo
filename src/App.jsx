@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import MovieList from './components2/MovieList.jsx';
+import MovieDetails from './components2/MovieDetails.jsx';
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,7 +17,7 @@ const App = () => {
     try {
       const response = await fetch('http://localhost:3000/peliculas');
       const peliculasData = await response.json();
-      setData(peliculasData);
+      setMovies(peliculasData);
       setLoading(false);
     } catch (error) {
       setError(error);
@@ -31,22 +34,12 @@ const App = () => {
   }
 
   return (
-    <div className="card-container">
-      {data.map((pelicula, index) => (
-        <div key={index} className="card">
-          <img src={pelicula.imageUrl} alt={pelicula.name} className="card-img" />
-          <div className="card-content">
-            <h2 className="card-title">{pelicula.name}</h2>
-            <p><strong>Categoría:</strong> {pelicula.category}</p>
-            <p><strong>Descripción:</strong> {pelicula.description}</p>
-            <p><strong>Director:</strong> {pelicula.director}</p>
-            <p><strong>Actores:</strong> {pelicula.actors.join(', ')}</p>
-            <p><strong>Plataforma:</strong> {pelicula.platform}</p>
-            <a href={pelicula.trailerUrl} target="_blank" rel="noopener noreferrer">Ver tráiler</a>
-          </div>
-        </div>
-      ))}
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<MovieList movies={movies} />} />
+        <Route path="/movie/:index" element={<MovieDetails movies={movies} />} />
+      </Routes>
+    </Router>
   );
 };
 

@@ -1,0 +1,29 @@
+
+
+/* Estilo para la lista de películas */
+.movie-list {
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Estilo para cada elemento de la lista */
+.movie-list li {
+  margin-bottom: 10px;
+}
+
+/* Estilo para los enlaces */
+.movie-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.movie-list img {
+  width: 300px; /* Ancho deseado */
+  height: auto; /* Altura ajustada automáticamente */
+}
+
+/* Estilos para el efecto al pasar el ratón sobre las imágenes */
+.movie-list img:hover {
+  opacity: 0.8; /* Reducción de la opacidad al pasar el ratón */
+}
