@@ -1,4 +1,6 @@
+import './Header.css';
 import React, { useState } from 'react';
+
 
 const Header = ({ categories, movies, setFilteredMovies }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -15,7 +17,7 @@ const Header = ({ categories, movies, setFilteredMovies }) => {
 
   return (
     <header>
-      <h1>Encabezado</h1>
+      <h1></h1>
       {/* Filtro por categorías */}
       <select onChange={handleCategoryChange} value={selectedCategory}>
         <option value="">Todas las categorías</option>
