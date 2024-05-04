@@ -12,17 +12,17 @@ select:hover {
   }
 
   select option {
-    /* Estilos para las opciones dentro del select */
-    background-color: rgb(0, 0, 0); /* Cambia el color de fondo de las opciones */
-    color: rgb(255, 255, 255); /* Cambia el color del texto de las opciones */
-    padding: 15px 30px; /* Ajusta el espaciado interno de las opciones */
-    margin: 5px 2; /* Aumenta el margen entre las opciones */
+  
+    background-color: rgb(0, 0, 0); 
+    color: rgb(255, 255, 255);
+    padding: 15px 30px; 
+    margin: 5px 2;
   }
   
   select option:hover {
-    /* Estilos para las opciones cuando se pasa el cursor sobre ellas */
-    background-color: rgb(0, 123, 255); /* Cambia el color de fondo al pasar el cursor */
-    color: rgb(255, 255, 255); /* Cambia el color del texto al pasar el cursor */
+
+    background-color: rgb(0, 123, 255); 
+    color: rgb(156, 228, 174); 
   }
   
   

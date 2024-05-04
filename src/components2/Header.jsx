@@ -8,7 +8,7 @@ const Header = ({ categories, movies, setFilteredMovies }) => {
   const handleCategoryChange = (event) => {
     const category = event.target.value;
     setSelectedCategory(category);
-    // Filtrar las películas según la categoría seleccionada
+    
     const filteredMovies = category
       ? movies.filter(movie => movie.category.includes(category))
       : movies;
@@ -18,7 +18,7 @@ const Header = ({ categories, movies, setFilteredMovies }) => {
   return (
     <header>
       <h1></h1>
-      {/* Filtro por categorías */}
+  
       <select onChange={handleCategoryChange} value={selectedCategory}>
         <option value="">Todas las categorías</option>
         {categories.map((category, index) => (
