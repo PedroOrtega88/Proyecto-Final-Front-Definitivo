@@ -24,8 +24,8 @@ const Header = ({ categories, movies, setFilteredMovies }) => {
           <option key={index} value={category}>{category}</option>
         ))}
       </select>
-      <Link to="/login">Iniciar Sesión</Link>
-      <Link to="/register">Registrarse</Link> {/* Nuevo enlace para el registro */}
+      <Link to="/login">Iniciar Sesión/</Link>
+      <Link to="/register">Registrarse</Link> 
     </header>
   );
 };
