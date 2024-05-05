@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import MovieList from './components2/MovieList.jsx';
-import MovieDetails from './components2/MovieDetails.jsx';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components2/Header.jsx';
-import CommentsPage from './components2/CommentsPage.jsx'
-import Login from './components2/Login.jsx'
-import Register from './components2/Register.jsx';
-import './App.css';
-
+import PeliculasRutas from './rutas/PeliculasRutas.jsx'; 
+import './App.css'
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,31 +49,10 @@ const App = () => {
   return (
     <Router>
       <Header categories={categories} movies={movies} setFilteredMovies={setFilteredMovies} />
-      <Routes>
-        <Route exact path="/" element={<MovieList movies={filteredMovies} />} />
-        <Route path="/movie/:index" element={<MovieDetails movies={movies} />} />
-        
-        <Route path="/category/:category" element={<CategoryMovies movies={movies} />} />
-       
-        <Route path="/comments/:index" element={<CommentsPage movies={movies} />} />
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/register" element={<Register />} /> 
-
-        <Route path="*" element={<Navigate to="/404" />} />
-      </Routes>
+      {/* Utilizamos el componente PeliculasRutas para manejar las rutas */}
+      <PeliculasRutas movies={movies} filteredMovies={filteredMovies} />
     </Router>
   );
-};
-
-const CategoryMovies = ({ movies, params }) => {
-  const category = params.category;
-  const categoryMovies = movies.filter(movie => movie.category.includes(category));
-
-  return <MovieList movies={categoryMovies} />;
-};
-
-const NotFound = () => {
-  return <div>404 - Página no encontrada</div>;
 };
 
 export default App;
