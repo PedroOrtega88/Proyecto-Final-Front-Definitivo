@@ -4,6 +4,8 @@ import MovieList from './components2/MovieList.jsx';
 import MovieDetails from './components2/MovieDetails.jsx';
 import Header from './components2/Header.jsx';
 import CommentsPage from './components2/CommentsPage.jsx'
+import Login from './components2/Login.jsx'
+import Register from './components2/Register.jsx';
 import './App.css';
 
 const App = () => {
@@ -59,7 +61,9 @@ const App = () => {
         <Route path="/category/:category" element={<CategoryMovies movies={movies} />} />
        
         <Route path="/comments/:index" element={<CommentsPage movies={movies} />} />
-        <Route path="/404" element={<NotFound />} />
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/register" element={<Register />} /> 
+
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </Router>
