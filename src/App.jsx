@@ -20,7 +20,7 @@ const App = () => {
       const peliculasData = await response.json();
       setMovies(peliculasData);
       setLoading(false);
-      // Extraer categorías de las películas y almacenarlas en un array separado
+      
       const allCategories = peliculasData.reduce((acc, movie) => {
         movie.category.split(', ').forEach(category => {
           if (!acc.includes(category)) {
@@ -30,7 +30,7 @@ const App = () => {
         return acc;
       }, []);
       setCategories(allCategories);
-      // Inicialmente, mostrar todas las películas
+    
       setFilteredMovies(peliculasData);
     } catch (error) {
       setError(error);
@@ -49,7 +49,7 @@ const App = () => {
   return (
     <Router>
       <Header categories={categories} movies={movies} setFilteredMovies={setFilteredMovies} />
-      {/* Utilizamos el componente PeliculasRutas para manejar las rutas */}
+      
       <PeliculasRutas movies={movies} filteredMovies={filteredMovies} />
     </Router>
   );
